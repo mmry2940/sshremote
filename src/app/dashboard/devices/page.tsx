@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Server, CircleDot, ChevronRight, PlusCircle } from "lucide-react";
+import { Server, CircleDot, ChevronRight, PlusCircle, LayoutDashboard } from "lucide-react";
 import Link from "next/link";
 import { AddDeviceDialog } from "@/components/add-device-dialog";
 
@@ -56,7 +56,7 @@ export default function DevicesPage() {
             <CardFooter>
               <Button asChild variant="outline" className="w-full">
                 <Link href={`/dashboard/devices/${device.id}`}>
-                  View Details <ChevronRight className="ml-2 h-4 w-4" />
+                  View Dashboard <LayoutDashboard className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
             </CardFooter>

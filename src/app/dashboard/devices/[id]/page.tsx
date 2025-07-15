@@ -15,7 +15,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Progress } from "@/components/ui/progress";
-import { Cpu, HardDrive, MemoryStick } from "lucide-react";
+import { Cpu, HardDrive, MemoryStick, FileText, TerminalSquare, MonitorPlay } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const processes = [
   { pid: 1024, user: "root", cpu: "0.5%", mem: "1.2%", command: "/usr/sbin/nginx -g 'daemon off;'" },
@@ -26,15 +28,57 @@ const processes = [
   { pid: 4501, user: "systemd", cpu: "0.0%", mem: "0.1%", command: "/lib/systemd/systemd-logind" },
 ];
 
-export default function DeviceDetailPage({ params }: { params: { id: string } }) {
+export default function DeviceDashboardPage({ params }: { params: { id: string } }) {
   const deviceName = "web-server-01"; // Mock data
 
   return (
     <>
       <PageHeader
         title={deviceName}
-        description={`Detailed information for device ID: ${params.id}`}
+        description={`Dashboard for device ID: ${params.id}`}
       />
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-6">
+         <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <FileText className="h-5 w-5" />
+              File Manager
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Button asChild className="w-full">
+              <Link href={`/dashboard/file-manager?device=${params.id}`}>Open File Manager</Link>
+            </Button>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <TerminalSquare className="h-5 w-5" />
+              SSH Terminal
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Button asChild className="w-full">
+              <Link href={`/dashboard/ssh?device=${params.id}`}>Open Terminal</Link>
+            </Button>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <MonitorPlay className="h-5 w-5" />
+              noVNC
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Button asChild className="w-full">
+              <Link href={`/dashboard/novnc?device=${params.id}`}>Open VNC Viewer</Link>
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+
       <div className="grid gap-6 md:grid-cols-3 mb-6">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
@@ -69,6 +113,7 @@ export default function DeviceDetailPage({ params }: { params: { id: string } })
           </CardContent>
         </Card>
       </div>
+
       <Card>
         <CardHeader>
           <CardTitle>Running Processes</CardTitle>
