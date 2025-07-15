@@ -1,3 +1,4 @@
+import { AddDeviceDialog } from "@/components/add-device-dialog";
 import { PageHeader } from "@/components/page-header";
 import {
   Card,
@@ -6,9 +7,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { FileText, MonitorPlay, TerminalSquare } from "lucide-react";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { FileText, MonitorPlay, PlusCircle, TerminalSquare } from "lucide-react";
+import Link from "next/link";
 
 export default function DashboardPage() {
   return (
@@ -16,7 +17,14 @@ export default function DashboardPage() {
       <PageHeader
         title="Dashboard"
         description="Active session: server-01 (192.168.1.101)"
-      />
+      >
+        <AddDeviceDialog>
+          <Button>
+            <PlusCircle className="mr-2 h-4 w-4" />
+            Add New Device
+          </Button>
+        </AddDeviceDialog>
+      </PageHeader>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <Card>
           <CardHeader>

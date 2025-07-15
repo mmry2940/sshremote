@@ -9,8 +9,9 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Server, CircleDot, ChevronRight } from "lucide-react";
+import { Server, CircleDot, ChevronRight, PlusCircle } from "lucide-react";
 import Link from "next/link";
+import { AddDeviceDialog } from "@/components/add-device-dialog";
 
 const devices = [
   { id: 1, name: "web-server-01", ip: "192.168.1.101", status: "Online" },
@@ -26,7 +27,14 @@ export default function DevicesPage() {
       <PageHeader
         title="Devices"
         description="Manage your connected remote devices."
-      />
+      >
+        <AddDeviceDialog>
+           <Button>
+              <PlusCircle className="mr-2 h-4 w-4" />
+              Add Device
+            </Button>
+        </AddDeviceDialog>
+      </PageHeader>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {devices.map((device) => (
           <Card key={device.id}>
