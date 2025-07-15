@@ -10,7 +10,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Upload, Download } from "lucide-react";
+import { Upload, Download, KeyRound } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
 
 export default function SettingsPage() {
   return (
@@ -61,6 +62,37 @@ export default function SettingsPage() {
           </CardContent>
           <CardFooter className="border-t px-6 py-4">
             <Button>Update Password</Button>
+          </CardFooter>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Tailscale Integration</CardTitle>
+            <CardDescription>
+              Configure your Tailscale API settings to manage your tailnet.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="grid gap-2">
+              <Label htmlFor="tailscale-api-key">API Key</Label>
+              <Input
+                id="tailscale-api-key"
+                type="password"
+                placeholder="tskey-api-..."
+              />
+            </div>
+            <div className="flex items-center justify-between">
+                <Label htmlFor="tailscale-enabled" className="flex flex-col gap-1">
+                    <span>Enable Tailscale</span>
+                    <span className="font-normal text-xs text-muted-foreground">
+                        Allow the app to interact with your Tailnet.
+                    </span>
+                </Label>
+              <Switch id="tailscale-enabled" />
+            </div>
+          </CardContent>
+          <CardFooter className="border-t px-6 py-4">
+            <Button>Save Tailscale Settings</Button>
           </CardFooter>
         </Card>
 
