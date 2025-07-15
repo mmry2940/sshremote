@@ -3,7 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { LayoutDashboard, LogOut, Server, Settings, Terminal, User } from "lucide-react"
+import { LayoutDashboard, LogOut, Server, Settings, Terminal, FileText, TerminalSquare, MonitorPlay } from "lucide-react"
 
 import {
   Sidebar,
@@ -14,12 +14,8 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
   SidebarProvider,
   SidebarTrigger,
-  useSidebar,
 } from "@/components/ui/sidebar"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
@@ -49,6 +45,39 @@ export default function DashboardLayout({
                 <Link href="/dashboard">
                   <LayoutDashboard />
                   Dashboard
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton
+                asChild
+                isActive={pathname.startsWith("/dashboard/file-manager")}
+              >
+                <Link href="/dashboard/file-manager">
+                  <FileText />
+                  File Manager
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton
+                asChild
+                isActive={pathname.startsWith("/dashboard/ssh")}
+              >
+                <Link href="/dashboard/ssh">
+                  <TerminalSquare />
+                  SSH Terminal
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton
+                asChild
+                isActive={pathname.startsWith("/dashboard/novnc")}
+              >
+                <Link href="/dashboard/novnc">
+                  <MonitorPlay />
+                  noVNC
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
