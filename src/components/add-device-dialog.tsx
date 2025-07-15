@@ -29,6 +29,8 @@ import { useToast } from "@/hooks/use-toast";
 const addDeviceSchema = z.object({
   name: z.string().min(1, "Device name is required."),
   ip: z.string().ip({ version: "v4", message: "Invalid IP address." }),
+  username: z.string().min(1, "Username is required."),
+  password: z.string().min(1, "Password is required."),
 });
 
 type AddDeviceFormValues = z.infer<typeof addDeviceSchema>;
@@ -41,12 +43,14 @@ export function AddDeviceDialog({ children }: { children: React.ReactNode }) {
     defaultValues: {
       name: "",
       ip: "",
+      username: "",
+      password: "",
     },
   });
 
   const onSubmit = (data: AddDeviceFormValues) => {
     // Here you would typically handle the form submission, e.g., send to an API
-    console.log("New device added:", data);
+    console.log("New device added:", { name: data.name, ip: data.ip, username: data.username });
     toast({
       title: "Device Added",
       description: `Successfully added ${data.name} (${data.ip}).`,
@@ -86,8 +90,35 @@ export function AddDeviceDialog({ children }: { children: React.ReactNode }) {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>IP Address</FormLabel>
+
                   <FormControl>
                     <Input placeholder="e.g. 192.168.1.102" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="username"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Username</FormLabel>
+                  <FormControl>
+                    <Input placeholder="e.g. admin" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input type="password" placeholder="••••••••" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
