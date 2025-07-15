@@ -7,12 +7,16 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-export function VncViewer() {
+interface VncViewerProps {
+  deviceName?: string;
+}
+
+export function VncViewer({ deviceName = "server-01" }: VncViewerProps) {
   return (
     <Card>
       <CardHeader>
         <CardTitle>noVNC Session</CardTitle>
-        <CardDescription>Graphical desktop access to server-01.</CardDescription>
+        <CardDescription>Graphical desktop access to {deviceName}.</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="relative aspect-video w-full overflow-hidden rounded-lg border">
