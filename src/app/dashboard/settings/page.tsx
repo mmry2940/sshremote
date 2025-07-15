@@ -95,6 +95,25 @@ export default function SettingsPage() {
             <Button>Save Tailscale Settings</Button>
           </CardFooter>
         </Card>
+        
+        <Card>
+          <CardHeader>
+            <CardTitle>SSH Key Management</CardTitle>
+            <CardDescription>
+              Import a new SSH key or export your existing one.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="flex flex-col sm:flex-row gap-4">
+            <Button variant="outline" className="w-full sm:w-auto">
+              <Upload className="mr-2 h-4 w-4" />
+              Import Key
+            </Button>
+            <Button variant="outline" className="w-full sm:w-auto">
+              <Download className="mr-2 h-4 w-4" />
+              Export Key
+            </Button>
+          </CardContent>
+        </Card>
 
         <Card>
           <CardHeader>
