@@ -3,7 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { LayoutDashboard, LogOut, Server, Settings, Terminal, FileText, TerminalSquare, MonitorPlay, Activity } from "lucide-react"
+import { LayoutDashboard, LogOut, Server, Settings, Terminal, FileText, TerminalSquare, MonitorPlay, Activity, Network } from "lucide-react"
 
 import {
   Sidebar,
@@ -89,6 +89,17 @@ export default function DashboardLayout({
                 <Link href="/dashboard/processes">
                   <Activity />
                   Processes
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+             <SidebarMenuItem>
+              <SidebarMenuButton
+                asChild
+                isActive={pathname.startsWith("/dashboard/tailscale")}
+              >
+                <Link href="/dashboard/tailscale">
+                  <Network />
+                  Tailscale
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>

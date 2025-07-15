@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { FileText, MonitorPlay, PlusCircle, TerminalSquare } from "lucide-react";
+import { FileText, MonitorPlay, Network, PlusCircle, TerminalSquare } from "lucide-react";
 import Link from "next/link";
 
 export default function DashboardPage() {
@@ -25,7 +25,7 @@ export default function DashboardPage() {
           </Button>
         </AddDeviceDialog>
       </PageHeader>
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -71,6 +71,22 @@ export default function DashboardPage() {
           <CardContent>
             <Button asChild className="w-full">
               <Link href="/dashboard/novnc">Open VNC Viewer</Link>
+            </Button>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Network className="h-5 w-5" />
+              Tailscale
+            </CardTitle>
+            <CardDescription>
+              Manage your secure device network.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Button asChild className="w-full">
+              <Link href="/dashboard/tailscale">Manage Tailnet</Link>
             </Button>
           </CardContent>
         </Card>
